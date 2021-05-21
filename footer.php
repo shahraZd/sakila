@@ -1,4 +1,13 @@
 
+    <footer class="footer fixed-bottom mt-auto py-3 bg-light">
+  <div class="container">
+  <div class="d-flex flex-wrap align-items-center justify-content-between justify-content-lg-between">
+      <span class="text-muted">Made with ❤ by Cyrine </span>
+  <span class="text-muted">© 2020–2021</span>
+     
+      </div>
+  </div>
+</footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

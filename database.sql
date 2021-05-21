@@ -1,5 +1,5 @@
-create database company;
-use company;
+create database sakila;
+use sakila;
 
 create table people (
   id  int(11) auto_increment primary key,
