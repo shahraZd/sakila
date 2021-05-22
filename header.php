@@ -21,7 +21,7 @@
         </a>
         <?php
         //login_success.php  
-        if (isset($_SESSION["username"])) {
+        if (isset($_COOKIE["username"])) {
           echo '   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
             <div class="container-fluid">
               <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
@@ -30,10 +30,10 @@
                     <a class="nav-link" aria-current="page" href="create.php">Ajouter un auteur</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="index.php">List des auteurs</a>
+                    <a class="nav-link " aria-current="page" href="actors.php">List des auteurs</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="#">List des catégories</a>
+                    <a class="nav-link " aria-current="page" href="films.php">List des Films</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="#">Historique des locations</a>
@@ -52,8 +52,9 @@
         <a href="login.php" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
           <?php
           //login_success.php  
-          if (isset($_SESSION["username"])) {
-            echo '<button type="button" class="btn btn-danger">Déconnexion</button>';
+          
+          if (isset($_COOKIE["username"])) {
+            echo '<a type="button" class="btn btn-danger" href="logout.php" >Déconnexion</a>';
           } else {
             echo '<button type="button" class="btn btn-warning">Connexion</button>';
           }

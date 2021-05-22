@@ -1,12 +1,12 @@
 <?php
 require 'db.php';
 $message = '';
-if (isset ($_POST['name'])  && isset($_POST['email']) ) {
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $sql = 'INSERT INTO people(name, email) VALUES(:name, :email)';
+if (isset ($_POST['first_name'])  && isset($_POST['last_name']) ) {
+  $first_name = $_POST['first_name'];
+  $last_name = $_POST['last_name'];
+  $sql = 'INSERT INTO actor(first_name, last_name) VALUES(:first_name, :last_name)';
   $statement = $connection->prepare($sql);
-  if ($statement->execute([':name' => $name, ':email' => $email])) {
+  if ($statement->execute([':first_name' => $first_name, ':last_name' => $last_name])) {
     $message = 'data inserted successfully';
   }
 
@@ -20,7 +20,7 @@ if (isset ($_POST['name'])  && isset($_POST['email']) ) {
 <div class="container">
   <div class="card mt-5">
     <div class="card-header">
-      <h2>Ajouter un auteur</h2>
+      <h2>Ajouter un acteur</h2>
     </div>
     <div class="card-body">
       <?php if(!empty($message)): ?>
@@ -30,12 +30,12 @@ if (isset ($_POST['name'])  && isset($_POST['email']) ) {
       <?php endif; ?>
       <form method="post">
         <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" name="name" id="name" class="form-control">
+          <label for="first_name">Nom</label>
+          <input type="text" name="first_name" id="first_name" class="form-control">
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" class="form-control">
+          <label for="last_name">Prenom</label>
+          <input type="text" name="last_name" id="last_name" class="form-control">
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-info">Ajouter</button>

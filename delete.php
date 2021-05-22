@@ -1,8 +1,8 @@
 <?php
 require 'db.php';
-$id = $_GET['id'];
-$sql = 'DELETE FROM people WHERE id=:id';
+$actor_id = $_GET['actor_id'];
+$sql = 'DELETE FROM actor WHERE actor_id=:actor_id';
 $statement = $connection->prepare($sql);
-if ($statement->execute([':id' => $id])) {
+if ($statement->execute([':actor_id' => $actor_id])) {
   header("Location: /");
 }

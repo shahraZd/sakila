@@ -1,35 +1,38 @@
 <?php
-  // $host = "localhost";
-  // $username = "root";
-  // $password = "";
-  // $database = "sakila";
-  // $message = "";
-  try {
-    require 'db.php';
-    if (isset($_POST["login"])) {
-      if (empty($_POST["username"]) || empty($_POST["password"])) {
-        $message = '<label>All fields are required</label>';
-      } else {
-        $query = "SELECT * FROM login WHERE username = :username AND password = :password";
-        $statement = $connection->prepare($query);
-        $statement->execute(
-          array(
-            'username'     =>     $_POST["username"],
-            'password'     =>     $_POST["password"]
-          )
-        );
-        $count = $statement->rowCount();
-        if ($count > 0) {
-          $_SESSION["username"] = $_POST["username"];
+try {
+  require 'db.php';
+  if (isset($_COOKIE["username"])) {
+    header("location:index.php");
+  }
+  if (isset($_POST["login"])) {
+    if (empty($_POST["username"]) || empty($_POST["password"])) {
+      $message = '<label>All fields are required</label>';
+    } else {
+      $query = "SELECT * FROM login WHERE username = :username AND password = :password";
+      $statement = $connection->prepare($query);
+      $statement->execute(
+        array(
+          'username'     =>     $_POST["username"],
+          'password'     =>     $_POST["password"]
+        )
+      );
+      $count = $statement->rowCount();
+      if ($count > 0) {
+
+        $result = $statement->fetchAll();
+        foreach ($result as $row) {
+
+          setcookie("username", $row["username"], time() + 3600);
           header("location:index.php");
-        } else {
-          $message = '<label>Wrong Data</label>';
         }
+      } else {
+        $message = '<label>Wrong Data</label>';
       }
     }
-  } catch (PDOException $error) {
-    $message = $error->getMessage();
   }
+} catch (PDOException $error) {
+  $message = $error->getMessage();
+}
 
 ?>
 <!DOCTYPE html>
