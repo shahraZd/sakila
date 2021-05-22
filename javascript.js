@@ -4,3 +4,7 @@ $(document).ready(function () {
       "pagingType": "numbers"
     });
   });
+
+  function confirmation() {
+     confirm("Are you sure you want to delete this entry?");
+  }

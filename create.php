@@ -8,6 +8,7 @@ if (isset ($_POST['first_name'])  && isset($_POST['last_name']) ) {
   $statement = $connection->prepare($sql);
   if ($statement->execute([':first_name' => $first_name, ':last_name' => $last_name])) {
     $message = 'data inserted successfully';
+    header("Location: index.php");
   }
 
 

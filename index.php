@@ -73,7 +73,7 @@ $actor = $statement->fetchAll(PDO::FETCH_OBJ);
             if (isset($_COOKIE["username"])) {
               echo '   <td>
                   <a href="edit.php?actor_id=' . $person->actor_id . '" class="btn btn-info"><i class="fa fa-pencil-square-o fa-lg"></i></a>
-                  <a onclick="confirm()" href="delete.php?actor_id=' .  $person->actor_id . '" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i></a>
+                  <a onclick="confirmation()" href="delete.php?actor_id=' .  $person->actor_id . '" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i></a>
                 </td>';
             }
             ?>
