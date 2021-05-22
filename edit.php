@@ -1,48 +1,43 @@
 <?php
 require 'db.php';
-$id = $_GET['id'];
-$sql = 'SELECT * FROM people WHERE id=:id';
+$actor_id = $_GET['actor_id'];
+$sql = 'SELECT * FROM actor WHERE actor_id=:actor_id';
 $statement = $connection->prepare($sql);
-$statement->execute([':id' => $id ]);
+$statement->execute([':actor_id' => $actor_id]);
 $person = $statement->fetch(PDO::FETCH_OBJ);
-if (isset ($_POST['name'])  && isset($_POST['email']) ) {
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $sql = 'UPDATE people SET name=:name, email=:email WHERE id=:id';
+if (isset($_POST['first_name'])  && isset($_POST['last_name'])) {
+  $first_name = $_POST['first_name'];
+  $last_name = $_POST['last_name'];
+  $sql = 'UPDATE actor SET first_name=:first_name, last_name=:last_name WHERE actor_id=:actor_id';
   $statement = $connection->prepare($sql);
-  if ($statement->execute([':name' => $name, ':email' => $email, ':id' => $id])) {
-    header("Location: /");
+  if ($statement->execute([':first_name' => $first_name, ':last_name' => $last_name, ':actor_id' => $actor_id])) {
+    header("Location: index.php");
   }
-
-
-
 }
-
-
- ?>
+?>
 <?php require 'header.php'; ?>
 <div class="container">
   <div class="card mt-5">
     <div class="card-header">
-      <h2>Update person</h2>
+      <h2>Modifier acteur</h2>
     </div>
     <div class="card-body">
-      <?php if(!empty($message)): ?>
+      <?php if (!empty($message)) : ?>
         <div class="alert alert-success">
           <?= $message; ?>
         </div>
       <?php endif; ?>
       <form method="post">
         <div class="form-group">
-          <label for="name">Name</label>
-          <input value="<?= $person->name; ?>" type="text" name="name" id="name" class="form-control">
+          <label for="first_name">Nom</label>
+          <input value="<?php echo($person->first_name); ?>" type="text" name="first_name" id="first_name" class="form-control">
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" value="<?= $person->email; ?>" name="email" id="email" class="form-control">
+          <label for="last_name">Prenom</label>
+          <input type="text" value="<?php echo($person->last_name); ?>" name="last_name" id="last_name" class="form-control">
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-info">Update person</button>
+          <button type="submit" class="btn btn-info">Modifier</button>
         </div>
       </form>
     </div>

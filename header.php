@@ -7,8 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="style/index.css" >
 </head>
 
 <body class="bg-light">
@@ -27,17 +29,12 @@
               <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="create.php">Ajouter un auteur</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="actors.php">List des auteurs</a>
+                    <a class="nav-link " aria-current="page" href="index.php">List des acteurs</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="films.php">List des Films</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="#">Historique des locations</a>
-                  </li>
+                 
   
                 </ul>
               </div>
