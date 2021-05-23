@@ -11,7 +11,7 @@ $actor = $statement->fetchAll(PDO::FETCH_OBJ);
         <div class="card-header">
             <div class="row mb-3">
                 <div class="col-12 text-center">
-                    <h2>List des Acteurs</h2>
+                    <h2>Liste des Acteurs</h2>
                 </div>
             </div>
             <div class="row mb-3">
@@ -34,7 +34,7 @@ $actor = $statement->fetchAll(PDO::FETCH_OBJ);
 
                     <select class="form-select" aria-label="Default select example">
                         <option value="1" selected>Nom</option>
-                        <option value="2">Naissance</option>
+                        <option value="2">Prenom</option>
                     </select>
 
 

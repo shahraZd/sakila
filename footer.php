@@ -1,7 +1,7 @@
 <footer class="footer fixed-bottom mt-auto py-3 bg-light">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-between justify-content-lg-between">
-      <span class="text-muted">Made with ❤ by Cyrine </span>
+      
       <span class="text-muted">© 2020–2021</span>
 
     </div>

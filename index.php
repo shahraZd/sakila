@@ -18,7 +18,7 @@ $actor = $statement->fetchAll(PDO::FETCH_OBJ);
     <div class="card-header">
       <div class="row mb-3">
         <div class="col-12 text-center">
-          <h2>List des Acteurs</h2>
+          <h2>Liste des Acteurs</h2>
         </div>
       </div>
       <div class="row mb-3 d-flex justify-content-center">

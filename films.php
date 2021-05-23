@@ -18,7 +18,7 @@ $film = $statement->fetchAll(PDO::FETCH_OBJ);
     <div class="card-header">
       <div class="row mb-3">
         <div class="col-12 text-center">
-          <h2>List des Films</h2>
+          <h2>Liste des Films</h2>
         </div>
       </div>
       <div class="row mb-3 d-flex justify-content-center">
@@ -74,8 +74,8 @@ $film = $statement->fetchAll(PDO::FETCH_OBJ);
             <?php
             if (isset($_COOKIE["username"])) {
               echo '   <td>
-                  <a href="edit.php?film_id=' . $person->film_id . '" class="btn btn-info"><i class="fa fa-pencil-square-o fa-lg"></i></a>
-                  <a onclick="confirmation()" href="delete.php?film_id=' .  $person->film_id . '" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i></a>
+                  <a href="editFilm.php?film_id=' . $person->film_id . '" class="btn btn-info"><i class="fa fa-pencil-square-o fa-lg"></i></a>
+                  <a onclick="confirmation()" href="deleteFilm.php?film_id=' .  $person->film_id . '" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i></a>
                 </td>';
             }
             ?>
