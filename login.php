@@ -30,6 +30,7 @@ try {
         foreach ($result as $row) {
           // create cookie for 1hour
           setcookie("username", $row["username"], time() + 3600);
+          setcookie("type", $row["type"], time() + 3600);
           // redirect to index page
           header("location:index.php");
         }
@@ -55,7 +56,7 @@ try {
     ?>
     <form method="post">
       <div class="form-floating mb-3">
-        <label for="floatingInput">Non d'utilisateur</label>
+        <label for="floatingInput">Nom d'utilisateur</label>
         <input type="text" name="username" class="form-control" id="floatingInput" placeholder="name@example.com">
       </div>
       <div class="form-floating mb-3">

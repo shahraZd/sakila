@@ -1,20 +1,21 @@
 <?php
 require 'db.php';
 $message = '';
-if (isset($_POST['title'])  && isset($_POST['description']) && isset($_POST['release_year']) && isset($_POST['language_id'])) {
-   $title = $_POST['title'];
+$one = 1;
+if (isset($_POST['title'])  && isset($_POST['description']) && isset($_POST['release_year']) ) {
+  $title = $_POST['title'];
   $description = $_POST['description'];
   $release_year = $_POST['release_year'];
-  $sql = 'INSERT INTO film (title,description,release_year,language_id) VALUES(:title, :description,:release_year,:language_id)';
-  $statement = $connection->prepare($sql);
-  if ($statement->execute([':title' => $title, ':description' => $description, ':release_year' => $release_year,':language_id' => $language_id])) {
-    $message = 'data inserted successfully';
-    header("Location: films.php");
-  }
-
-
-
+  
+$sql = 'INSERT INTO film (title,description,release_year,language_id ,original_language_id ,rental_duration ,rental_rate,replacement_cost) 
+VALUES("'.$title.'", "'.$description.'", "'.$release_year.'", "'.$one.'", "'.$one.'", "'.$one.'", "'.$one.'", "'.$one.'")';
+	if($connection->exec($sql)){
+		 header("Location: films.php");
+	}; 
 }
+
+
+
 
 
  ?>
@@ -44,14 +45,13 @@ if (isset($_POST['title'])  && isset($_POST['description']) && isset($_POST['rel
           <label for="release_year">Année</label>
           <input type="text" name="release_year" id="release_year" class="form-control">
         </div>
-		 <div class="form-group">
-          <label for="language_id">Langue</label>
-          <input type="text" name="language_id" id="language_id" class="form-control">
-        </div>
+		
+		
+		
         <div class="form-group">
           <button type="submit" class="btn btn-info">Ajouter</button>
         </div>
-      </form>
+		      </form>
     </div>
   </div>
 </div>

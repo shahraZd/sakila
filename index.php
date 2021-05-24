@@ -13,6 +13,8 @@ $statement->execute();
 $actor = $statement->fetchAll(PDO::FETCH_OBJ);
 ?>
 <?php include("./header.php") ?>
+
+<?php $isAdmin = (isset($_COOKIE['type']) && $_COOKIE['type'] == 'admin') ? true : false; ?>
 <div class="container">
   <div class="card mt-5">
     <div class="card-header">
@@ -21,67 +23,79 @@ $actor = $statement->fetchAll(PDO::FETCH_OBJ);
           <h2>Liste des Acteurs</h2>
         </div>
       </div>
-      <div class="row mb-3 d-flex justify-content-center">
+      <div>
         <?php
-        if (isset($_COOKIE["username"])) {
+        if (isset($_COOKIE["username"]) && $isAdmin) {
           echo ' <div class="col-4">
-
                     <a type="button" class="btn btn-danger " href="create.php">Ajouter</a>
                 </div>';
         }
         ?>
+        <br>
 
-        <form method="post" class="col-8  ">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" value="" name="txtSearch" id="txtSearch" placeholder="Recherche..." aria-label="Recherche..." aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" name="btnSearch" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
-          </div>
-          <div class="d-flex">
-            <div class="form-check mr-5 ml-3">
-              <input class="form-check-input" type="radio" name="RBsearch" id="RBsearch" value="first_name">
-              <label for="RBsearch">Nom</label>
-            </div>
-            <div class="form-check ">
-              <input class="form-check-input" type="radio" name="RBsearch" id="RBsearch1" value="last_name">
-              <label for="RBsearch1">Prenom</label>
-            </div>
-          </div>
-        </form>
+        <br>
       </div>
 
+      <form method="post" class="col-8  ">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" value="" name="txtSearch" id="txtSearch" placeholder="Recherche..." aria-label="Recherche..." aria-describedby="button-addon2">
+          <button class="btn btn-outline-secondary" name="btnSearch" type="submit" id="button-addon2">
+            <?php
+            if (!empty($t)) {
+              echo '<i class="bi bi-x text-danger"></i></button>';
+            } else {
+              echo '  <i class="bi bi-search text-primary"></i>';
+            }
+            ?></button>
+        </div>
+
+        <div class="d-flex">
+          <div class="form-check mr-5 ml-3">
+            <input class="form-check-input" type="radio" name="RBsearch" id="RBsearch" value="first_name">
+            <label for="RBsearch">Nom</label>
+          </div>
+          <div class="form-check ">
+            <input class="form-check-input" type="radio" name="RBsearch" id="RBsearch1" value="last_name">
+            <label for="RBsearch1">Prenom</label>
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="card-body">
-      <table class="table caption-top table-striped table-hover " id="paginationNumbers">
-        <caption> <?php echo count($actor) . 'enregistrement(s)'; ?></caption>
-        <tr class=" table-warning">
-          <th>ID</th>
-          <th>Nom</th>
-          <th>Prenom</th>
+
+  </div>
+
+  <div class="card-body">
+    <table class="table caption-top table-striped table-hover " id="paginationNumbers">
+      <caption> <?php echo count($actor) . 'enregistrement(s)'; ?></caption>
+      <tr class=" table-warning">
+        <th>ID <?php if (isset($_COOKIE["type"])); ?></th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <?php
+        if (isset($_COOKIE["username"]) && $isAdmin) {
+          echo '<th>Action</th>';
+        }
+        ?>
+
+      </tr>
+      <?php foreach ($actor as $person) : ?>
+        <tr>
+          <td><?= $person->actor_id; ?></td>
+          <td><?= $person->first_name; ?></td>
+          <td><?= $person->last_name; ?></td>
           <?php
-          if (isset($_COOKIE["username"])) {
-            echo '<th>Action</th>';
+          if (isset($_COOKIE["username"]) && $isAdmin) {
+            echo '   <td>
+                  <a href="edit.php?actor_id=' . $person->actor_id . '" class="btn btn-info"><i class="fa fa-pencil-square-o fa-lg"></i></a>
+                  <a onclick="confirmation()" href="delete.php?actor_id=' .  $person->actor_id . '" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i></a>
+                </td>';
           }
           ?>
 
         </tr>
-        <?php foreach ($actor as $person) : ?>
-          <tr>
-            <td><?= $person->actor_id; ?></td>
-            <td><?= $person->first_name; ?></td>
-            <td><?= $person->last_name; ?></td>
-            <?php
-            if (isset($_COOKIE["username"])) {
-              echo '   <td>
-                  <a href="edit.php?actor_id=' . $person->actor_id . '" class="btn btn-info"><i class="fa fa-pencil-square-o fa-lg"></i></a>
-                  <a onclick="confirmation()" href="delete.php?actor_id=' .  $person->actor_id . '" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i></a>
-                </td>';
-            }
-            ?>
-
-          </tr>
-        <?php endforeach; ?>
-      </table>
-    </div>
+      <?php endforeach; ?>
+    </table>
   </div>
+</div>
 </div>
 <?php require 'footer.php'; ?>

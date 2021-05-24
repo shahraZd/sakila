@@ -15,7 +15,7 @@
 
 <body class="bg-light">
 
-  <header class="p-3 bg-dark text-white">
+  <header class="p-3 text-white">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-between justify-content-lg-between">
         <a href="index.php" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -24,15 +24,22 @@
         <?php
         //login_success.php  
         if (isset($_COOKIE["username"])) {
-          echo '   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
+          echo '   <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Tenth navbar example">
             <div class="container-fluid">
               <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="index.php">List des acteurs</a>
+                    <a class="nav-link " aria-current="page" href="index.php">Liste des acteurs</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="films.php">List des Films</a>
+                    <a class="nav-link " aria-current="page" href="films.php">Liste des Films</a>
+                  </li>
+				     <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="index_categories.php">Liste des catégories</a>
+                  </li>
+			
+				  	 <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="Historique_paiement.php">Historique de paiement</a>
                   </li>
                  
   
